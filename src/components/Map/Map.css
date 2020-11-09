@@ -1,0 +1,9 @@
+.leaflet__wrapper {
+    width: 50%;
+    flex: 1 1 50%;
+    height: 100vh;
+  }
+  
+.leaflet-container {
+    height: 100vh;
+}

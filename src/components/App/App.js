@@ -1,6 +1,7 @@
 import { Component } from 'react';
 import './App.css';
 import Table from './../Table/Table';
+import Map from './../Map/Map';
 
 class App extends Component {
   constructor(props) {
@@ -137,6 +138,10 @@ class App extends Component {
 
           <Table messages={ this.state.messages }/>
         </div>
+        
+        <Map
+          point={[]}
+        />
       </div>
     )
   }
