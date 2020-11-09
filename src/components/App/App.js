@@ -97,7 +97,17 @@ class App extends Component {
    * @param {object} record 
    */
   addNewRecordToMessages(record) {
-    console.log(record)
+    let newMessages = [
+      ...this.state.messages,
+      {
+        ...record,
+        measurements: [...record.measurements] // Transform 'measurements' to an Array for being able to use it as a snapshots history
+      }
+    ];
+
+    this.setState({
+      messages: newMessages
+    })
   }
 
   /**
@@ -106,13 +116,26 @@ class App extends Component {
    * @param {number} id 
    */
   updateRecordInMessages(record, id) {
-    console.log(record, id)
+    let newMessages = [...this.state.messages]
+
+    newMessages[id] = {
+      ...newMessages[id],
+      measurements: [...newMessages[id].measurements, ...record.measurements]
+    }
+
+    this.setState({
+      messages: newMessages
+    })
   }
 
   render() {
     return (
       <div className="wrapper">
         Connection: {this.state.connectionState ? 'connected' : 'not connected'}
+
+        <pre>
+          {JSON.stringify(this.state.messages)}
+        </pre>
       </div>
     )
   }
