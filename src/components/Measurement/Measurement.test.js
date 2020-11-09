@@ -28,7 +28,7 @@ it("renders a proper component for Location", () => {
     expect(container.textContent).toBe("See the map");
 });
 
-it("renders a proper component for Serial", () => {
+it("renders a proper component for empty Serial", () => {
     act(() => {
         render(<Measurement
                     name={"Serial"}
@@ -38,7 +38,7 @@ it("renders a proper component for Serial", () => {
     expect(container.textContent).toBe("-");
 });
 
-it("renders a proper component for Serial", () => {
+it("renders a proper component for Serial with some data", () => {
     act(() => {
         render(<Measurement
                     name={"Serial"}
@@ -48,7 +48,7 @@ it("renders a proper component for Serial", () => {
     expect(container.textContent).toBe("0B100100");
 })
 
-it("renders a proper component for Serial", () => {
+it("renders a proper component for proper Serial", () => {
     act(() => {
         render(<Measurement
                     name={"Serial"}
