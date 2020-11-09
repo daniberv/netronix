@@ -1,36 +1,9 @@
-import { Fragment, Component } from 'react';
+import { Component } from 'react';
 import PropTypes from 'prop-types';
-import AnimatedRender from './../AnimatedRender/AnimatedRender';
 import Measurement from './../Measurement/Measurement';
+import LastValue from './../LastValue/LastValue';
 
 class Table extends Component {
-    /**
-     * Render the last value for the certain record
-     * @param {String} name 
-     * @param {Array} measurements 
-     */
-    renderLastValueOfMeasurements(name, measurements) {
-      let value = null
-  
-      switch(name) {
-        case 'Location':
-          value = 'See the map'
-          break;
-        case 'Serial':
-          value = measurements[measurements.length - 1] !== undefined ? measurements[measurements.length - 1][1] : '-'
-          break;
-        default:
-          value = measurements[measurements.length - 1] !== undefined ? measurements[measurements.length - 1][1] : '-'
-          break;
-      }
-  
-      return (
-        <Fragment>
-          <AnimatedRender value={value} />
-        </Fragment>
-      )
-    }
-
     render() {
       return (
           <table className="App">
@@ -51,7 +24,14 @@ class Table extends Component {
                     <td className="short-cell" title={message._id}>{ message._id }</td>
                     <td><b>{ message.name }</b></td>
                     <td>{ message.unit }</td>
-                    <td><b>{ this.renderLastValueOfMeasurements(message.name, message.measurements) }</b></td>
+                    <td>
+                      <b>
+                        <LastValue
+                          name={message.name}
+                          measurements={message.measurements}
+                        />
+                      </b>
+                    </td>
                     <td>
                       <Measurement
                         name={message.name}
