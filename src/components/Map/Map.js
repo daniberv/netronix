@@ -1,3 +1,8 @@
+/**
+ * Known issues:
+ * React-Leaflet is not completely reactive. So I used 'key'-changing trick to re-render the map according props state
+ */
+
 import React from 'react';
 import { MapContainer, TileLayer, Marker } from 'react-leaflet';
 import SVG from './SVG';

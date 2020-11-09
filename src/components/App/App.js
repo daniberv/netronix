@@ -130,6 +130,20 @@ class App extends Component {
     })
   }
 
+  /**
+   * Get point on the map to be rendered based on received updates
+   */
+  getPointOnMap = () => {
+    return this.state.messages.filter(message => message.name === "Location").map((item, index) => {
+      return (
+        item.measurements[item.measurements.length - 1] !== undefined ?
+          ([item.measurements[item.measurements.length - 1][1][0], item.measurements[item.measurements.length - 1][1][1]])
+          :
+          null
+      )
+    })
+  }
+
   render() {
     return (
       <div className="wrapper">
@@ -140,7 +154,7 @@ class App extends Component {
         </div>
         
         <Map
-          point={[]}
+          point={this.getPointOnMap()}
         />
       </div>
     )
