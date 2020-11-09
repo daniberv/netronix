@@ -52,7 +52,12 @@ class App extends Component {
    */
   validateReceivedData = (data) => {
     return new Promise((resolve, reject) => {
-      resolve(true)
+      try {
+        const readyData = JSON.parse(data)
+        resolve(readyData)
+      } catch(e) {
+        reject(e)
+      }
     })
   }
 
@@ -61,7 +66,47 @@ class App extends Component {
    * @param {array} records 
    */
   handleRecievedRecords(records) {
-    console.log(records)
+    records.forEach(record => {
+      // Check if the record already exists
+      this.checkIfRecordExists(record)
+        .then(recordIndexInMessages => {
+          if(recordIndexInMessages === false) this.addNewRecordToMessages(record)
+          else                                this.updateRecordInMessages(record, recordIndexInMessages)
+        })
+        .catch(e => {
+          console.log(e)
+        })
+    });
+  }
+
+  /**
+   * Check if the record already exists
+   * @param {object} record 
+   */
+  checkIfRecordExists(record) {
+    return new Promise((resolve, reject) => {
+      const recordIdx = this.state.messages.findIndex(message => message._id === record._id)
+
+      if(recordIdx !== -1) resolve(recordIdx)
+      resolve(false)
+    })
+  }
+
+  /**
+   * Add the record to the messages
+   * @param {object} record 
+   */
+  addNewRecordToMessages(record) {
+    console.log(record)
+  }
+
+  /**
+   * Update the record in case we already have it
+   * @param {object} record 
+   * @param {number} id 
+   */
+  updateRecordInMessages(record, id) {
+    console.log(record, id)
   }
 
   render() {
