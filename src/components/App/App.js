@@ -1,5 +1,6 @@
 import { Fragment, Component } from 'react';
 import './App.css';
+import Table from './../Table/Table';
 
 class App extends Component {
   constructor(props) {
@@ -133,30 +134,8 @@ class App extends Component {
       <div className="wrapper">
         <div className="table__wrapper">
           <h1>Measurements</h1>
-          <table className="App">
-            <thead>
-              <tr>
-                <td width="10%">ID</td>
-                <td width="17%">Name</td>
-                <td width="8%">Unit</td>
-                <td width="65%">Measurements</td>
-              </tr>
-            </thead>
-            <tbody>
-            {
-              this.state.messages.reverse().map(message => {
-                return (
-                  <tr key={`record_${message._id}`}>
-                    <td className="short-cell" title={message._id}>{ message._id }</td>
-                    <td><b>{ message.name }</b></td>
-                    <td>{ message.unit }</td>
-                    <td>{ JSON.stringify(message.measurements.reverse()) }</td>
-                  </tr>
-                )
-              })
-            }
-            </tbody>
-          </table>
+
+          <Table messages={ this.state.messages }/>
         </div>
       </div>
     )
