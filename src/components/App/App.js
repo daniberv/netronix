@@ -139,7 +139,7 @@ class App extends Component {
         item.measurements[item.measurements.length - 1] !== undefined ?
           ([item.measurements[item.measurements.length - 1][1][0], item.measurements[item.measurements.length - 1][1][1]])
           :
-          null
+          []
       )
     })
   }
