@@ -11,7 +11,6 @@ import './Map.css';
 import PropTypes from 'prop-types';
 
 const Map = props => {
-    console.log(props.point)
     return (
         <div className="leaflet__wrapper">
             <MapContainer

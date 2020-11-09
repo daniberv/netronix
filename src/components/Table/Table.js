@@ -1,36 +1,9 @@
 import { Fragment, Component } from 'react';
 import PropTypes from 'prop-types';
-import LineChart from './../LineChart/LineChart';
 import AnimatedRender from './../AnimatedRender/AnimatedRender';
+import Measurement from './../Measurement/Measurement';
 
 class Table extends Component {
-    /**
-     * Show a string, last value or chart depending on record type
-     * @param {String} name 
-     * @param {Array} measurements 
-     */
-    renderMeasurements(name, measurements) {
-        let component = null
-    
-        switch(name) {
-          case 'Location':
-            component = 'See the map'
-            break;
-          case 'Serial':
-            component = measurements[measurements.length - 1]
-            break;
-          default:
-            component = <LineChart measurements={measurements.slice(-5)} /> // Last 5 elements render only
-            break;
-        }
-    
-        return (
-          <Fragment>
-            {component}
-          </Fragment>
-        )
-    }
-
     /**
      * Render the last value for the certain record
      * @param {String} name 
@@ -79,7 +52,12 @@ class Table extends Component {
                     <td><b>{ message.name }</b></td>
                     <td>{ message.unit }</td>
                     <td><b>{ this.renderLastValueOfMeasurements(message.name, message.measurements) }</b></td>
-                    <td>{ this.renderMeasurements(message.name, message.measurements) }</td>
+                    <td>
+                      <Measurement
+                        name={message.name}
+                        measurements={message.measurements}
+                      />
+                    </td>
                 </tr>
                 )
               })
