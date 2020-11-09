@@ -1,4 +1,4 @@
-import { Fragment, Component } from 'react';
+import { Component } from 'react';
 import './App.css';
 import Table from './../Table/Table';
 

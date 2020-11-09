@@ -1,6 +1,33 @@
-import { Component } from 'react';
+import { Fragment, Component } from 'react';
 
 class Table extends Component {
+    /**
+     * Show a string, last value or chart depending on record type
+     * @param {String} name 
+     * @param {Array} measurements 
+     */
+    renderMeasurements(name, measurements) {
+        let component = null
+    
+        switch(name) {
+          case 'Location':
+            component = 'See the map'
+            break;
+          case 'Serial':
+            component = measurements[measurements.length - 1]
+            break;
+          default:
+            component = 'Chart goes here'
+            break;
+        }
+    
+        return (
+          <Fragment>
+            {component}
+          </Fragment>
+        )
+    }
+
     render() {
         return (
             <table className="App">
@@ -20,7 +47,7 @@ class Table extends Component {
                         <td className="short-cell" title={message._id}>{ message._id }</td>
                         <td><b>{ message.name }</b></td>
                         <td>{ message.unit }</td>
-                        <td>{ JSON.stringify(message.measurements.reverse()) }</td>
+                        <td>{ this.renderMeasurements(message.name, message.measurements) }</td>
                     </tr>
                     )
                 })
