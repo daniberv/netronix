@@ -1,4 +1,5 @@
 import { Fragment, Component } from 'react';
+import LineChart from './../LineChart/LineChart';
 
 class Table extends Component {
     /**
@@ -17,7 +18,7 @@ class Table extends Component {
             component = measurements[measurements.length - 1]
             break;
           default:
-            component = 'Chart goes here'
+            component = <LineChart measurements={measurements.slice(-5)} /> // Last 5 elements render only
             break;
         }
     
