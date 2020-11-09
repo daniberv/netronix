@@ -4,8 +4,9 @@
  */
 
 import { LineChart, Line, ResponsiveContainer, Tooltip } from 'recharts';
+import PropTypes from 'prop-types';
 
-const renderLineChart = (props) => {
+const RenderLineChart = (props) => {
   return (
     <ResponsiveContainer width="100%" height={60} minWidth="0">
         <LineChart data={
@@ -23,4 +24,8 @@ const renderLineChart = (props) => {
   )
 };
 
-export default renderLineChart;
+RenderLineChart.propTypes = {
+    measurements: PropTypes.array
+};
+
+export default RenderLineChart;

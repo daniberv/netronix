@@ -8,8 +8,10 @@ import { MapContainer, TileLayer, Marker } from 'react-leaflet';
 import SVG from './SVG';
 import "leaflet/dist/leaflet.css"
 import './Map.css';
+import PropTypes from 'prop-types';
 
 const Map = props => {
+    console.log(props.point)
     return (
         <div className="leaflet__wrapper">
             <MapContainer
@@ -32,5 +34,9 @@ const Map = props => {
         </div>
     )
 }
+
+Map.propTypes = {
+    point: PropTypes.array
+};
 
 export default Map;

@@ -1,4 +1,5 @@
 import { Fragment, Component } from 'react';
+import PropTypes from 'prop-types';
 import LineChart from './../LineChart/LineChart';
 import AnimatedRender from './../AnimatedRender/AnimatedRender';
 
@@ -88,5 +89,9 @@ class Table extends Component {
       )
     }
 }
+
+Table.propTypes = {
+  messages: PropTypes.array
+};
 
 export default Table;
