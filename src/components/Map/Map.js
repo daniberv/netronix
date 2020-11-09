@@ -11,11 +11,12 @@ import './Map.css';
 import PropTypes from 'prop-types';
 
 const Map = props => {
+    console.log(props.point)
     return (
         <div className="leaflet__wrapper">
             <MapContainer
                 key={props.point}
-                center={props.point.length > 0 ? [props.point[0][0], props.point[0][1]] : [55.190318,30.1834053]}
+                center={props.point.length > 0 && props.point[0].length > 0 ? [props.point[0][0], props.point[0][1]] : [55.190318,30.1834053]}
                 zoom={11}
                 scrollWheelZoom={false}
                 attributionControl={false}
@@ -27,7 +28,7 @@ const Map = props => {
                     url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
                 />
                 {
-                    props.point.length > 0 ? <Marker icon={SVG} position={[props.point[0][0], props.point[0][1]]}></Marker> : ''
+                    props.point.length > 0 && props.point[0].length > 0 ? <Marker icon={SVG} position={[props.point[0][0], props.point[0][1]]}></Marker> : ''
                 }
             </MapContainer>
         </div>
