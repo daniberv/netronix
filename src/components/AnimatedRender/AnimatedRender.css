@@ -1,0 +1,12 @@
+.blink-animation {
+    animation: 2s blink;
+}
+
+@keyframes blink {
+    0% {background-color: #8884d8 }
+    10% {background-color: #fff }
+    16% {background-color: #8884d8 }
+    27% {background-color: #fff }
+    37% {background-color: #8884d8 }
+    100% {background-color: #fff }
+}

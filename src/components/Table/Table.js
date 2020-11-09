@@ -1,5 +1,6 @@
 import { Fragment, Component } from 'react';
 import LineChart from './../LineChart/LineChart';
+import AnimatedRender from './../AnimatedRender/AnimatedRender';
 
 class Table extends Component {
     /**
@@ -51,7 +52,7 @@ class Table extends Component {
   
       return (
         <Fragment>
-          { value }
+          <AnimatedRender value={value} />
         </Fragment>
       )
     }
